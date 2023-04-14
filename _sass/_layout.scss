@@ -1,77 +1,74 @@
-// Layout
-//
-// Styles for managing the structural hierarchy of the site.
+// Layout styles
+// ---------------------------------------/
 
+// Layout from Primer (https://github.com/primer/primer/blob/master/scss/_layout.scss)
+
+// Fixed-width, centered column for site content.
 .container {
-  padding: 0;
-  margin: 0;
-}
-
-.home-header {
-  margin-top: -1em;
-  margin-bottom: var(--spacer-3);
-}
-
-.content {
-  padding-top: var(--spacer-2);
-  padding-left: var(--spacer-2);
-  padding-right: var(--spacer-2);
-  margin-left:  auto;
+  width: $container-width;
   margin-right: auto;
-  min-height: 100vh;
+  margin-left: auto;
+  @include clearfix;
 }
 
-.sidebar-left {
-  display: flex;
-  padding: var(--spacer);
-  background: center / cover;
-  height: 100vh;
+// Grid system
+//
+// Create rows with `.columns` to clear the floated columns and outdent the
+// padding on `.column`s with negative margin for alignment.
+
+.columns {
+  margin-right: -$grid-gutter;
+  margin-left: -$grid-gutter;
+  @include clearfix;
 }
 
-footer {
-  margin-top: var(--spacer-3);
-  margin-bottom: var(--spacer-3);
+// Base class for every column (requires a column width from below)
+.column {
+  float: left;
+  padding-right: $grid-gutter;
+  padding-left: $grid-gutter;
 }
 
-@media (min-width: $md-width) {
-  .content {
-    padding-top: var(--spacer-3);
-    padding-left: var(--spacer-3);
-    padding-right: var(--spacer-3);
-    margin-left: 25%;
-  }
-
-  .sidebar-left {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-  }
-
-  .home-header {
-    margin-top: -2em;
-  }
+// Column widths
+.one-third {
+  width: 33.333333%;
 }
 
-@media (min-width: $lg-width) {
-  .sidebar-right {
-    display: block;
-  }
+.two-thirds {
+  width: 66.666667%;
 }
 
-@media (max-width: $lg-width) {
-  .sidebar-right {
-    display: none;
-  }
+.one-fourth {
+  width: 25%;
 }
 
-@media (max-width: $md-width) {
-  .content {
-    width: 100%;
-  }
+.one-half {
+  width: 50%;
 }
 
-@media (min-width: $md-width) and (max-width: $lg-width) {
-  .content {
-    width: 75%;
-  }
+.three-fourths {
+  width: 75%;
+}
+
+.one-fifth {
+  width: 20%;
+}
+
+.four-fifths {
+  width: 80%;
+}
+
+// Single column hack
+.single-column {
+  padding-right: $grid-gutter;
+  padding-left: $grid-gutter;
+}
+
+// Equal width columns via table sorcery.
+.table-column {
+  display: table-cell;
+  width: 1%;
+  padding-right: $grid-gutter;
+  padding-left: $grid-gutter;
+  vertical-align: top;
 }
